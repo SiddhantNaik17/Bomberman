@@ -57,7 +57,7 @@ public class Bomb extends StaticEntity {
         timer += now - lastTime;
         lastTime = now;
 
-        if (timer >= 2000000000) {
+        if (timer >= 4000000000L) {
             detonated = true;
             lastTime = System.nanoTime();
             timer = 0;
