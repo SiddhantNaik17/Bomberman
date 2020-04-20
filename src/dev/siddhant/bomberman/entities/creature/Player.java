@@ -129,15 +129,4 @@ public class Player extends Creature {
 
         return false;
     }
-
-    public boolean checkBombCollisions(float xOffset, float yOffset) {
-        for (Entity e: handler.getWorld().getEntityManager().getEntities()) {
-            if (e.equals(this))
-                continue;
-            if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)) && e instanceof Bomb)
-                return true;
-        }
-
-        return false;
-    }
 }

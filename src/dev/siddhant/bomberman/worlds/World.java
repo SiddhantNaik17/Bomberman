@@ -39,7 +39,7 @@ public class World {
 
     private Handler handler;
     private int width, height;
-    private int spawnX, spawnY;
+    //private int spawnX, spawnY;
 
     private int[][] tiles;
 
@@ -112,8 +112,8 @@ public class World {
 
         width = Utils.parseInt(tokens[0]);
         height = Utils.parseInt(tokens[1]);
-        spawnX = Utils.parseInt(tokens[2]);
-        spawnY = Utils.parseInt(tokens[3]);
+        //spawnX = Utils.parseInt(tokens[2]);
+        //spawnY = Utils.parseInt(tokens[3]);
 
         tiles = new int[width][height];
         for (int y=0; y<height; y++) {

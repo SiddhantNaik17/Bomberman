@@ -86,7 +86,7 @@ public abstract class Entity {
 
     public void kill() {
         killed = true;
-    };
+    }
 
     public boolean isKilled() {
         return killed;
@@ -96,16 +96,8 @@ public abstract class Entity {
         return x;
     }
 
-    public void setX(float x) {
-        this.x = x;
-    }
-
     public float getY() {
         return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
     }
 
     public int getWidth() {

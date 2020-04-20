@@ -30,6 +30,7 @@ import dev.siddhant.bomberman.entities.creature.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class EntityManager {
 
@@ -43,14 +44,17 @@ public class EntityManager {
         this.player = player;
         enemyCount = 0;
 
-        entities = new ArrayList<Entity>();
+        entities = new ArrayList<>();
         addEntity(player);
     }
 
     public void tick() {
-        for (int i=0; i<entities.size(); i++) {
-            Entity e = entities.get(i);
-            e.tick();
+        try {
+            for (Entity e : entities) {
+                e.tick();
+            }
+        } catch (ConcurrentModificationException e) {
+            e.getStackTrace();
         }
     }
 
@@ -81,10 +85,6 @@ public class EntityManager {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public ArrayList<Entity> getEntities() {

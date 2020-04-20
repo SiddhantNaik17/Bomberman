@@ -58,8 +58,4 @@ public class Animation {
     }
 
     public boolean isEndOfAnimation() { return index == (frames.length - 1); }
-
-    public int length() {
-        return frames.length;
-    }
 }

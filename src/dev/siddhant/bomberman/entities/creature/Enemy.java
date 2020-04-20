@@ -37,7 +37,7 @@ public class Enemy extends Creature {
 
     private Animation animLeft, animRight, animDeath;
 
-    private enum Direction { Right, Left, Up, Down; }
+    private enum Direction { Right, Left, Up, Down }
     private Direction currDirection;
 
     public Enemy(Handler handler, float x, float y) {

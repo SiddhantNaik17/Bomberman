@@ -57,10 +57,6 @@ public class Handler {
         return game;
     }
 
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
     public World getWorld() {
         return world;
     }

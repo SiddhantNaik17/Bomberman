@@ -43,9 +43,6 @@ public class Game implements Runnable {
     private boolean running = false;
     private Thread thread;
 
-    private BufferStrategy bs;
-    private Graphics g;
-
     private KeyManager keyManager;
 
     private GameCamera gameCamera;
@@ -86,14 +83,14 @@ public class Game implements Runnable {
     }
 
     private void render() {
-        bs = display.getCanvas().getBufferStrategy();
+        BufferStrategy bs = display.getCanvas().getBufferStrategy();
 
         if (bs == null) {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
 
-        g = bs.getDrawGraphics();
+        Graphics g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height); //Clear screen
 
         if (State.getState() != null)
@@ -107,7 +104,7 @@ public class Game implements Runnable {
         init();
 
         int fps = 60;
-        double timePerTick = 1000000000 / fps;
+        double timePerTick = 1000000000.0 / fps;
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
