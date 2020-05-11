@@ -85,7 +85,7 @@ public class Enemy extends Creature {
             currDirection = Direction.values()[new Random().nextInt(Direction.values().length)];
 
         if (checkPlayerCollisions(xMove, yMove))
-            handler.getGame().endGame();
+            handler.getWorld().getEntityManager().getPlayer().kill();
 
         move();
     }

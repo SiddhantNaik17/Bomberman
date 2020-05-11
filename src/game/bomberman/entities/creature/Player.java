@@ -105,4 +105,9 @@ public class Player extends Creature {
 
         return false;
     }
+
+    public void kill() {
+        killed = true;
+        handler.getGame().endGame();
+    }
 }

@@ -6,6 +6,7 @@ import game.bomberman.input.KeyManager;
 import game.bomberman.states.GameState;
 import game.bomberman.states.MenuState;
 import game.bomberman.states.State;
+import game.bomberman.utils.AudioPlayer;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -29,6 +30,10 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
 
+    private Thread audioPlayerThread;
+
+    private boolean gameOver = false;
+
     public Game(String title, int width, int height) {
         this.title = title;
         this.width = width;
@@ -49,6 +54,9 @@ public class Game implements Runnable {
         menuState = new MenuState(handler);
 
         State.setState(gameState);
+
+        audioPlayerThread = new Thread(new AudioPlayer("res/sounds/stage_theme.wav"));
+        audioPlayerThread.start();
     }
 
     private void tick() {
@@ -150,7 +158,12 @@ public class Game implements Runnable {
     }
 
     public void endGame() {
-        handler.getWorld().getEntityManager().getPlayer().kill();
-        System.out.println("Game Over");
+        if (!gameOver) {
+            gameOver = true;
+            audioPlayerThread.stop();
+            audioPlayerThread = new Thread(new AudioPlayer("res/sounds/life_lost.wav"));
+            audioPlayerThread.start();
+            System.out.println("Game Over");
+        }
     }
 }
