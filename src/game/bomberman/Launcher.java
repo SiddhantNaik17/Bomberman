@@ -1,7 +1,7 @@
-import game.bomberman.Game;
+package game.bomberman;
 
 /**
- * Launcher class containing the main method responsible to start the game
+ * game.bomberman.Launcher class containing the main method responsible to start the game
  */
 public class Launcher {
 
